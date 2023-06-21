@@ -37,7 +37,7 @@ class Solution {
         int l = arr[0]; // Initialize the largest element
         int sl = -1; // Initialize the second largest element
         
-        for (int i = 1; i < n; i++) { // Start from index 1
+        for (int i = 0; i <=n-1; i++) { // Start from index 1
             if (arr[i] > l) {
                 sl = l; // Store the current largest element as the second largest
                 l = arr[i]; // Update the largest element
