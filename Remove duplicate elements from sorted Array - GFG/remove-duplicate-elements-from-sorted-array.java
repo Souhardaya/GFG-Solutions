@@ -35,7 +35,7 @@ class Solution {
         int i = 0;
         for (int j = 1; j < n; j++) {  // Corrected the loop initialization to start from 1
             if (arr[j] != arr[i]) {
-                arr[i + 1] = arr[j];
+                arr[i+1] = arr[j];
                 i++;
             }
         }
