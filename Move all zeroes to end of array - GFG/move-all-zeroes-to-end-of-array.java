@@ -34,7 +34,9 @@ public class Main {
 
 class Solution {
     void pushZerosToEnd(int[] arr, int n) {
-        int j = -1;
+        int j = -1; // Index to track the position of the first zero encountered
+
+        // Find the index of the first zero in the array
         for (int i = 0; i < n; i++) {
             if (arr[i] == 0) {
                 j = i;
@@ -47,15 +49,18 @@ class Solution {
             return;
         }
 
+        // Move non-zero elements to the left of the first zero encountered
         for (int i = j + 1; i < n; i++) {
             if (arr[i] != 0)
                 swap(arr, i, j++);
         }
     }
 
+    // Swaps the elements at indices i and j in the array
     void swap(int arr[], int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
 }
+
