@@ -31,7 +31,6 @@ public class Main {
 
 
 //User function Template for Java
-
 class Solution {
     void pushZerosToEnd(int[] arr, int n) {
         int j = -1; // Index to track the position of the first zero encountered
@@ -63,4 +62,3 @@ class Solution {
         arr[j] = temp;
     }
 }
-
