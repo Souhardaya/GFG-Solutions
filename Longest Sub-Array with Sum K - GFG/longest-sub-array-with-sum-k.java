@@ -45,31 +45,41 @@ class Array {
 
 
 
-
 class Solution {
-    public static int lenOfLongSubarr(int A[], int N, int K) {
-        Map<Integer, Integer> sumMap = new HashMap<>();  // Store cumulative sums and their indices
-        int maxLength = 0;
+    public static int lenOfLongSubarr(int[] A, int N, int K) {
+        Map<Integer, Integer> preSumMap = new HashMap<>();
         int sum = 0;
-        
+        int maxLen = 0;
+
         for (int i = 0; i < N; i++) {
-            sum += A[i];
-            
+            sum += A[i]; // Calculate the current prefix sum
+
             if (sum == K) {
-                maxLength = i + 1;  // Update maxLength if the entire array up to index i forms the subarray
+                // If the current prefix sum equals K, update the max length if necessary
+                maxLen = Math.max(maxLen, i + 1);
+            }
+
+            int rem = sum - K; // Calculate the remaining sum needed to reach K
+
+            if (preSumMap.containsKey(rem)) {
+                // If the remaining sum exists in the map, update the max length if necessary
+                int len = i - preSumMap.get(rem);
+                maxLen = Math.max(maxLen, len);
+            }
+
+            if (!preSumMap.containsKey(sum)) {
+                // Store the current prefix sum and its index in the map
+                preSumMap.put(sum, i);
             }
             
-            if (sumMap.containsKey(sum - K)) {
-                int length = i - sumMap.get(sum - K);
-                maxLength = Math.max(maxLength, length);
-            }
-            
-            if (!sumMap.containsKey(sum)) {
-                sumMap.put(sum, i);
+            if (preSumMap.containsKey(sum - K)) {
+                // Handle subarrays with negative or zero sum
+                int len = i - preSumMap.get(sum - K);
+                maxLen = Math.max(maxLen, len);
             }
         }
-        
-        return maxLength;
+
+        return maxLen; // Return the maximum length of the subarray with sum equal to K
     }
 }
 
