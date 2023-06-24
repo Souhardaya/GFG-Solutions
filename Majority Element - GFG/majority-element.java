@@ -29,10 +29,13 @@ class Geeks
 
 //User function Template for Java
 
+
 class Solution {
-    static int majorityElement(int[] a, int size) {
+    // Function to find the sum of contiguous subarray with maximum sum.
+   static int majorityElement(int[] a, int size) {
         int c = 0;
         int el = 0;
+        
         for (int i = 0; i < size; i++) {
             if (c == 0) {
                 c = 1;
