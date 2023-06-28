@@ -77,8 +77,9 @@ class Solution {
                 int currentStreak = 1;
 
                 while (hashSet.contains(currentNum + 1)) {
-                    currentNum += 1;
                     currentStreak += 1;
+                    currentNum += 1;
+                   
                 }
 
                 longestStreak = Math.max(longestStreak, currentStreak);
