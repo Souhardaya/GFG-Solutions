@@ -116,7 +116,7 @@ class Solution {
 
         Node fast = head;
         Node slow = head;
-        Node entry = head;
+       // Node entry = head;
 
         // Find the middle of the linked list
         while (fast.next != null && fast.next.next != null) {
@@ -130,11 +130,11 @@ class Solution {
 
         // Compare values of the first half and reversed second half
         while (slow != null) {
-            if (entry.data != slow.data) {
+            if (head.data != slow.data) {
                 return false;
             }
             slow = slow.next;
-            entry = entry.next;
+            head = head.next;
         }
 
         return true;
