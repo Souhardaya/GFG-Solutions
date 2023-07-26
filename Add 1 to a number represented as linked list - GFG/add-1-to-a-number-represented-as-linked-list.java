@@ -61,15 +61,15 @@ class Node{
 class Solution
 {
     public Node reverse(Node head) {
-        Node next = null;
+       // Node next = null;
         Node prev = null;
-        Node cur = head;
+       // Node cur = head;
         
-        while (cur != null) {
-            next = cur.next;
-            cur.next = prev;
-            prev = cur;
-            cur = next;
+        while (head != null) {
+          Node  next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
         }
         
         return prev;
