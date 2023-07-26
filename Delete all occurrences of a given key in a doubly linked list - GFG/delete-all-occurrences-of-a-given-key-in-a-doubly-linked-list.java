@@ -109,7 +109,7 @@ class Solution {
                     nodeToDelete.next.prev = current;
                 }
                 // Delete the nodeToDelete to free memory (optional in some languages with automatic garbage collection)
-                nodeToDelete = null;
+              // nodeToDelete = null;
             } else {
                 // Move to the next node
                 current = current.next;
