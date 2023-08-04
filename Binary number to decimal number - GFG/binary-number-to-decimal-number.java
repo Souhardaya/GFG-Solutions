@@ -20,9 +20,6 @@ class GFG {
 
 // } Driver Code Ends
 
-
-// User function Template for Java
-
 class Solution {
     public int binary_to_decimal(String str) {
         int i = 0;
