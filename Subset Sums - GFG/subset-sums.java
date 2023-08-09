@@ -46,6 +46,7 @@ class Solution {
     ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int N) {
         ArrayList<Integer> sumSubset = new ArrayList<>();
         func(0, 0, arr, N, sumSubset);
+        Collections.sort(sumSubset);
         return sumSubset;
     }
 }
