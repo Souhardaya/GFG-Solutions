@@ -35,9 +35,10 @@ class GFG
 
 
 
+
 class Solution {
     private int ROWS, COLS;
-    private Set<int[]> path;
+    private Set<Integer> path;
 
     public boolean isWordExist(char[][] board, String word) {
         ROWS = board.length;
@@ -57,26 +58,18 @@ class Solution {
         if (i == word.length()) {
             return true;
         }
-        if (r < 0 || c < 0 || r >= ROWS || c >= COLS || word.charAt(i) != board[r][c] || containsCoordinate(path, r, c)) {
+        if (r < 0 || c < 0 || r >= ROWS || c >= COLS || word.charAt(i) != board[r][c] || path.contains(r * COLS + c)) {
             return false;
         }
-        path.add(new int[]{r, c});
+        path.add(r * COLS + c);
 
         boolean res = (findWords(board, word, r + 1, c, i + 1) ||
                 findWords(board, word, r - 1, c, i + 1) ||
                 findWords(board, word, r, c + 1, i + 1) ||
                 findWords(board, word, r, c - 1, i + 1));
-        path.removeIf(coord -> coord[0] == r && coord[1] == c);
+        path.remove(r * COLS + c);
         return res;
     }
-
-    private boolean containsCoordinate(Set<int[]> coordinates, int r, int c) {
-        for (int[] coord : coordinates) {
-            if (coord[0] == r && coord[1] == c) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
+
 
