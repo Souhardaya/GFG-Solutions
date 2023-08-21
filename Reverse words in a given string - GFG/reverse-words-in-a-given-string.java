@@ -19,31 +19,17 @@ class GFG {
 // } Driver Code Ends
 
 
-
 class Solution {
     // Function to reverse words in a given string.
     String reverseWords(String S) {
-        // Split the input string into words based on whitespace
-        String[] words = S.split("\\.");
-        
-        // Initialize a StringBuilder to build the reversed string
+        String[] words = S.split("\\."); // Escape the dot as \\.
         StringBuilder sb = new StringBuilder();
-        
-        // Iterate over the words array in reverse order
         for (int i = words.length - 1; i >= 0; i--) {
-            // Append the current word to the StringBuilder
             sb.append(words[i]);
-            
-            // Append a space character after each word, except for the last word
             if (i > 0) {
-                sb.append(".");
+                sb.append('.'); // Add a period between words, excluding the last word.
             }
         }
-        
-        // Convert the StringBuilder contents to a string
-        String reversedString = sb.toString();
-        
-        // Return the reversed string
-        return reversedString;
+        return sb.toString();
     }
 }
