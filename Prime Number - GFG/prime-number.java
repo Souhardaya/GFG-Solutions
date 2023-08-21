@@ -21,19 +21,16 @@ class GFG
 
 class Solution {
     static int isPrime(int N) {
-        int c = 0;
-        for (int i = 1; i <= Math.sqrt(N); i++) {
+        if (N <= 1) {
+            return 0; // N is not prime
+        }
+        
+        for (int i = 2; i <= Math.sqrt(N); i++) {
             if (N % i == 0) {
-                c++;
-                if (i != N / i) { // Only count distinct divisors once
-                    c++;
-                }
+                return 0; // N is not prime
             }
         }
-        if (c == 2) {
-            return 1; // Prime
-        } else {
-            return 0; // Not prime
-        }
+        
+        return 1; // N is prime
     }
 }
