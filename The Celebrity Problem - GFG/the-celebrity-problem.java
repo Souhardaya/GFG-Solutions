@@ -28,29 +28,40 @@ class GFG{
 
 
 //User function Template for Java
-
-
 class Solution {
     // Function to find if there is a celebrity in the party or not.
     int celebrity(int M[][], int n) {
-        int[] in = new int[n];
-        int[] out = new int[n];
+        Stack<Integer> st = new Stack<>();
         
+        // Push all people onto the stack.
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (M[i][j] == 1) {
-                    in[j]++;
-                    out[i]++;
+            st.push(i);
+        }
+        
+        while (st.size() > 1) {
+            int a = st.pop();
+            int b = st.pop();
+            
+            if (M[a][b] == 1) {
+                // If a knows b, then 'a' cannot be the celebrity.
+                st.push(b);
+            } else {
+                // If a doesn't know b, then 'b' cannot be the celebrity.
+                st.push(a);
+            }
+        }
+        
+        int candidate = st.peek(); // Possible celebrity candidate.
+        
+        // Verify if the candidate is a celebrity.
+        for (int i = 0; i < n; i++) {
+            if (i != candidate) {
+                if (M[i][candidate] == 0 || M[candidate][i] == 1) {
+                    return -1; // 'i' doesn't know 'candidate' or 'candidate' knows 'i'.
                 }
             }
         }
         
-        for (int i = 0; i < n; i++) {
-            if (in[i] == n - 1 && out[i] == 0) {
-                return i;
-            }
-        }
-        
-        return -1;
+        return candidate;
     }
 }
