@@ -28,25 +28,21 @@ class GFG
 
 class Solution {
     static int longestSubstrDistinctChars(String S) {
-        if (S.length() == 0) {
-            return 0;
-        }
-        int max = 0;
-        int l = 0;
-        Set<Character> st = new HashSet<>();
-
-        for (int r = 0; r < S.length(); r++) {
-            char curr = S.charAt(r);
-            if (st.contains(curr)) {
-                while (l < r && st.contains(curr)) {
-                    char lchar = S.charAt(l);
-                    st.remove(lchar); // Changed S.remove(lchar) to st.remove(lchar)
-                    l++;
-                }
+        HashMap<Character, Integer> mpp = new HashMap<>();
+        int left = 0;
+        int right = 0;
+        int n = S.length();
+        int len = 0;
+        
+        while (right < n) {
+            if (mpp.containsKey(S.charAt(right))) {
+                left = Math.max(mpp.get(S.charAt(right)) + 1, left);
             }
-            st.add(curr);
-            max = Math.max(max, r - l + 1);
+            mpp.put(S.charAt(right), right);
+            len = Math.max(len, right - left + 1);
+            right++;
         }
-        return max;
+        
+        return len;
     }
 }
