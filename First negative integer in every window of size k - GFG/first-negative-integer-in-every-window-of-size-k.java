@@ -43,33 +43,32 @@ class GFG {
 //User function Template for Java
 
 
-
-
 class Compute {
-    public long[] printFirstNegativeInteger(long A[], int N, int K) {
-        int i = 0;
-        int j = 0;
-        long[] arr = new long[N - K + 1];
-        ArrayList<Long> al = new ArrayList<>();
-
-        while (j < N) {
-            if (A[j] < 0) {
+    
+    public long[] printFirstNegativeInteger(long A[], int N, int K)
+    {
+        int i=0;
+        int j=0;
+        long arr[]=new long[N-K+1];
+        ArrayList<Long> al=new ArrayList<>();
+        while(j<N){
+            if(A[j]<0){
                 al.add(A[j]);
             }
-            if (j - i + 1 == K) {
-                if (al.isEmpty()) {
-                    arr[i] = 0; // If no negative numbers found in the window, set 0
-                } else {
-                    arr[i] = al.get(0); // Store the first negative number in the window
-                    if (A[i] == al.get(0)) {
-                        al.remove(0); // Remove the leftmost element from the ArrayList if it's the same as A[i]
+            if(j-i+1==K){
+                if(al.isEmpty()){
+                    arr[i]=0;
+                }else{
+                    arr[i]=al.get(0);
+                    if(A[i]==al.get(0)){
+                        al.remove(0);
                     }
                 }
                 i++;
             }
             j++;
+            
         }
-        
         return arr;
     }
 }
